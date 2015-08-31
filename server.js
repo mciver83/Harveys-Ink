@@ -19,7 +19,7 @@ var express = require('express'),
 
 //controllers
 // var PaymentCtrl = require('./controllers/PayCtrl'),
-// 	ProductCtrl = require('./controllers/ProductCtrl'),
+	ProjectCtrl = require('./controllers/ProjectCtrl'),
 // 	PhotoCtrl = require('./controllers/PhotoCtrl'),
 // 	CustomerCtrl = require('./controllers/CustomerCtrl'),
 // 	CartCtrl = require('./controllers/CartCtrl'),
@@ -60,46 +60,9 @@ app.use(express.static(__dirname + '/public'));
 
 
 
-//Amazon s3 ====================================================
-AWS.config.loadFromPath('./config/aws-config.json');
-
-		// for HEROKU =====================================
-// AWS.config.accessKeyId = process.env.S3_KEY;
-// AWS.config.secretAccessKey = process.env.S3_SECRET;
-// AWS.config.region = 'us-west-2';
 
 
-
-var photoBucket = new AWS.S3({params: {Bucket: 'harveysink'}});
-
-
-function uploadToS3(buf, file, callback) {
-    photoBucket
-        .upload({
-            // Bucket: 'paulphin',
-            ACL: 'public-read', 
-            Body: buf, 
-            Key: file.name,
-            ContentType: file.type
-        }, callback)
-}
-
-app.post('/upload', function (req, res){
-    console.log(1111, req.body)
-    var buf = new Buffer(req.body.image.replace(/^data:image\/\w+;base64,/, ""), 'base64');
-    var file = req.body.file;
-    // var pid = '10000' + parseInt(Math.random() * 10000000);
- 
-    uploadToS3(buf, file, function (err, data) {
-        if (err){
-            console.error(err);
-            return res.status(500).send('failed to upload to s3').end();
-        } else {
-            res.send(data)
-        }
-    })
-})
-
+app.post('/api/portfolio/project', ProjectCtrl.create)
 
 
 

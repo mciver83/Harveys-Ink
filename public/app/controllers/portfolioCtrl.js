@@ -1,6 +1,6 @@
 var app = angular.module('harveysInk');
 
-app.controller('portfolioCtrl', function($scope, fileReader){
+app.controller('portfolioCtrl', function($scope, fileReader, portfolioService){
 	$scope.getFile = function () {
         $scope.progress = 0;
         fileReader.readAsDataUrl($scope.file, $scope)
@@ -33,5 +33,8 @@ app.controller('portfolioCtrl', function($scope, fileReader){
 
     $scope.addProject = function(project){
     	console.log(1111111, project);
+    	portfolioService.addProject(project).then(function(response){
+    		console.log('hi');
+    	})
     }
 })
