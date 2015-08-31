@@ -1,0 +1,11 @@
+<header>
+   <i class="material-icons md-36" ng-click="show=!show">menu</i>
+    <h1>HARVEY'S INK</h1>
+    <div></div>
+</header>
+<navbar class="flex-column justify-space-between align-center" ng-show="show" ng-animate="{show: 'example-show', hide: 'example-hide'}">
+    <i class="material-icons md-36" ng-click="show=!show" ng-show="show">clear</i>
+    <ul ng-repeat="item in navbarItems" hover toggle="text-color">
+        <li><a href='{{item.hash}}'>{{item.name}}</a></li>
+    </ul>
+</navbar>

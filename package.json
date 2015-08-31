@@ -1,0 +1,12 @@
+{
+  "name": "harveysink",
+  "version": "1.0.0",
+  "description": "Harvey's Ink ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Mark McIver",
+  "license": "ISC"
+}

@@ -1,0 +1,55 @@
+<div class="flex-column align-center">
+	<div class="">
+
+		<h1>Manage My Portfolio</h1>
+		<div>
+			<h4 ng-click="newProject.show=!newProject.show">Add New Project</h4><span>+</span>
+			<div ng-show="newProject.show" class="flex-column">
+				Title: <input type="text" ng-model="newProject.title" placeholder="Project Title"/>
+				Category: <input type="text" ng-model="newProject.category" placeholder="Category"/>
+				Description: <input type="text" ng-model="newProject.description" placeholder="Description"/>
+				Pictures: 
+				<div class="flex-row wrap">
+				   	<div ng-repeat="image in newProject.images">
+				   		<div class="flex-column">
+							<img class="img-thumbnail" ng-src="{{image.url}}"/>
+							<a href="" ng-click="removeImage(image, $index)">remove</a>
+						</div>
+					</div>
+				</div>
+
+				<h5>add image</h5>
+				<div class="flex-row">
+					<form enctype="multipart/form-data">
+			        	<input type="file" ng-file-select="onFileSelect($files)" required/>
+			   		</form>
+			   		<b>Preview:</b><br />
+			   		<img ng-show="imageSrc" class="img-thumbnail" ng-src="{{imageSrc}}"/><br />
+			   		<button class="btn btn-default" ng-click="addImage(imageSrc, file)">add image</button>
+			   	</div>
+			   	
+			   	<button class="btn btn-default" ng-click="addProject(newProject)">submit</button>
+			</div>
+
+		</div>
+
+
+		<!-- <h4> new photo </h4>
+		<input type="text" ng-model="photoTitle" placeholder="title"></input>
+
+		<div class="flex-row">
+			<form enctype="multipart/form-data">
+	        	<input type="file" ng-file-select="onFileSelect($files)" required/>
+	   		</form>
+	   		<b>Preview:</b><br />
+	   		<img ng-show="imageSrc" class="image-small" ng-src="{{imageSrc}}" /><br/>
+	   	</div>
+
+		
+		<input type="text" ng-model="photoDescription"  placeholder="decription: max 100 char"></input>
+		<input type="text" ng-model="photoCategory" placeholder="type"></input>
+		<input type="text" ng-model="photoAuth" placeholder="auth (i.e. store, excursion)" required></input> -->
+		
+		<!-- <button ng-click="addPhoto(imageSrc, file, photoTitle, photoDescription, photoCategory, photoAuth)">submit</button> -->
+	</div>
+</div>

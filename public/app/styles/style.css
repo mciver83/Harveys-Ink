@@ -1,0 +1,101 @@
+* {
+    border-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+.width50 {
+    width: 50%;
+}
+
+.height100 {
+    height: 100%;
+}
+
+#wrapper {
+    height: 100%;
+	min-height: 100%;
+	position: relative;
+}
+
+.border {
+    border: solid 1px black;
+}
+
+.padding {
+    padding: 0 15px;
+}
+
+.shadow {
+    box-shadow: 0 0 1px 1px rgba(0,0,0,0.5);
+}
+
+header {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+}
+
+header i {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+navbar {
+    padding-top: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    clear: both;
+    height: 100%;
+    z-index: 100;
+    box-shadow: 0 2px 40px 20px rgba(0,0,0,0.8);
+    width: 250px;
+    background: white;
+}
+
+navbar ul {
+    height: 80%;
+}
+
+navbar i {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.text-color {
+    color: deeppink;
+}
+
+
+
+
+
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

@@ -1,0 +1,28 @@
+.example-show, .example-hide {
+  -webkit-transition:all 2s ease-in-out 0.5s;
+  -moz-transition:all 2s ease-in-out 0.5s;
+  -ms-transition:all 2s ease-in-out 0.5s;
+  -o-transition:all 2s ease-in-out 0.5s;
+  transition:all 2s ease-in-out 0.5s;
+}
+
+/*.example-show-active.example-show-active {
+  line-height:20px;
+  opacity:1;
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}*/
+ 
+/*.example-hide {
+  line-height:20px;
+  opacity:1;
+  padding:10px;
+  border:1px solid black;
+  background:white;
+}
+.example-hide-active.example-hide-active {
+  line-height:0;
+  opacity:0;
+  padding:0 10px;
+}*/
