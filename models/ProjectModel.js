@@ -5,8 +5,7 @@ var ProjectSchema = mongoose.Schema({
 	title: { type: String, maxlength: 40 },
 	description: { type: String, maxlength: 100 },
 	images: [{}],
-	category: { type: String},
-	// auth: { type: String, required: true, default: 'website' }, //maybe name this property excersion??  
+	category: { type: String}, 
 	dateCreated: { type: Date, default: Date.now }
 })
 

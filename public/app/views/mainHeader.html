@@ -1,11 +1,16 @@
-<header>
-   <i class="material-icons md-36" ng-click="show=!show">menu</i>
-    <h1>HARVEY'S INK</h1>
-    <div></div>
+<header class="flex-row justify-space-between align-center">
+   <i class="material-icons md-36">menu</i>
+    <h3>Harvey Ink.</h3>
+    <i class="material-icons md-36">mi</i>
+    
+    <div id="navbar-wrapper" ng-show="show"></div>
+        <navbar ng-show="show">
+            <ul class="flex-column justify-space-between align-center"> 
+                <div class="width100" ng-repeat="item in navbarItems" hover toggle="enlarge">
+                    <li select-active item="item.hash" compare="locationHash" apply="navbar-active" ><a href='{{item.hash}}'>{{item.name}}</a></li>
+                </div>
+            </ul>
+        </navbar>
+    
 </header>
-<navbar class="flex-column justify-space-between align-center" ng-show="show" ng-animate="{show: 'example-show', hide: 'example-hide'}">
-    <i class="material-icons md-36" ng-click="show=!show" ng-show="show">clear</i>
-    <ul ng-repeat="item in navbarItems" hover toggle="text-color">
-        <li><a href='{{item.hash}}'>{{item.name}}</a></li>
-    </ul>
-</navbar>
+

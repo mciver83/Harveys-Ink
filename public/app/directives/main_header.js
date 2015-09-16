@@ -1,44 +1,54 @@
 var app = angular.module('harveysInk');
 
-app.directive('mainHeader', function(){
+app.directive('mainHeader', function($document){
 	return {
 		restrict: 'E',
-		templateUrl: 'app/views/mainHeader.html',
-		transclude: true,
-		link: function(scope, element, attrs, $document){
-			$document.on('scrolldown', function(){
-				element.addClass('background-white')
-			})
+		templateUrl: 'public/app/views/mainHeader.html',
+		link: function(scope, element, attrs){
+            console.log(element.find('i')[0], element.find('#navbar-wrapper')[0]);
+			var menu = element.find('i')[0];
+            var navbarWrapper = element.find('#navbar-wrapper')[0];
+            $(navbarWrapper).on('click', function () {
+                scope.show = !scope.show;
+                scope.$apply();
+            })
+            $(menu).on('click', function () {
+                scope.show = !scope.show;
+                scope.$apply();
+                console.log('clicked', scope.show)
+            })
 		},
-		controller: function($scope){
+		controller: function($scope, $location){
+            $scope.show;
+            $scope.locationHash = '#' + $location.path()
 			$scope.navbarItems = [
 				{
 					name: 'WHO WE ARE',
-					hash: '#/#about'
+					hash: '#/who/'
 				},
 				{
 					name: 'HOW WE WORK',
-					hash: '#/#skills'
+					hash: '#/how/'
 				},
 				{
 					name: 'PORTFOLIO',
-					hash: '#/#portfolio'
+					hash: '#/home/'
 				},
 				{
 					name: 'PRICING',
-					hash: '#/#contact'
+					hash: '#/pricing/'
 				},
 				{
 					name: 'PRF',
-					hash: '#/#contact'
+					hash: '#/prf/'
 				},
 				{
 					name: 'BLOG',
-					hash: '#/#contact'
+					hash: '#/blog/'
 				},
 				{
 					name: 'CONTACT',
-					hash: '#/#contact'
+					hash: '#/contact/'
 				}
 			]
 		}

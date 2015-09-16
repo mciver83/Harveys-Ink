@@ -6,8 +6,6 @@ var express = require('express'),
 	session = require('express-session'),
 	port = process.env.PORT || 9090,
 	passport = require('passport'),
-	// flash = require('connect-flash'),
-	// morgan = require('morgan'),
 	AWS = require('aws-sdk'),
 	fs = require('fs'),
 	multer = require('multer'),
@@ -18,14 +16,10 @@ var express = require('express'),
 
 
 //controllers
-// var PaymentCtrl = require('./controllers/PayCtrl'),
 	ProjectCtrl = require('./controllers/ProjectCtrl'),
-// 	PhotoCtrl = require('./controllers/PhotoCtrl'),
-// 	CustomerCtrl = require('./controllers/CustomerCtrl'),
-// 	CartCtrl = require('./controllers/CartCtrl'),
-// 	AddressCtrl = require('./controllers/AddressCtrl'),
+	ContentCtrl = require('./controllers/ContentCtrl'),
 // 	EmailCtrl = require('./controllers/EmailCtrl'),
-// 	OrderCtrl = require('./controllers/OrderCtrl');
+
 		
 	
 
@@ -47,7 +41,7 @@ mongoose.connection.once('open', function(){
 app.use(cookieParser()); // read cookies (needed for auth)
 app.use(cors());
 app.use(bodyParser({ limit: 10000000 }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/'));
 
 // required for passport==========================================
 // app.use(session({ secret: 'best secret ever' })); // session secret
@@ -61,9 +55,14 @@ app.use(express.static(__dirname + '/public'));
 
 
 
+//MANAGE PORTFOLIO
+app.post('/api/portfolio/projects/new', ProjectCtrl.create);
+app.get('/api/portfolio/projects', ProjectCtrl.get);
 
-app.post('/api/portfolio/project', ProjectCtrl.create)
-
+//MANAGE PAGE CONTENT
+app.post('/api/content', ContentCtrl.create);
+app.get('/api/content', ContentCtrl.get);
+app.put('/api/content', ContentCtrl.edit);
 
 
 //login
@@ -77,16 +76,6 @@ app.get('/api/auth', isLoggedIn, function(req, res){
 	res.send(req.user)
 })
 
-//admin =============================================================
-		
-		//photos
-// app.post('/admin/photos', isAdmin, PhotoCtrl.create);
-
-// app.get('/admin/photos', isAdmin, PhotoCtrl.get);
-
-// app.put('/admin/photos', isAdmin, PhotoCtrl.update);
-
-// app.delete('/admin/photos', isAdmin, PhotoCtrl.delete);
 
 	
 //emails================================================================

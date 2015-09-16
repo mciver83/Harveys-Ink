@@ -1,6 +1,15 @@
-<div id="active-img">
-	<img class="active-img" ng-src="active.image.url"/>
+<div id="project-title">
+    <h5>{{project.title}}</h5>
+    <p>{{project.description}}</p>
 </div>
-<div class="scroll flex-row ">
-	<div ng-repeat="image in piece.images"><img class="img-thumbnail" ng-src="{{image.url}}"/></div>
-</div> "
+
+<div id="active-img">
+	<img class="display-img" ng-src="{{active.image.url}}"/>
+</div>
+<div class="scroll images flex-row justify-center align-center">
+	<div class="small-separation pictures" ng-repeat="image in project.images">
+        <div ng-click="active.image = image">
+            <img select-active item="image.url" compare="active.image.url" apply="active" class="image-thumbnail" ng-src="{{image.url}}"/>
+        </div>
+    </div>
+</div> 

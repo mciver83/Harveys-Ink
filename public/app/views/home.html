@@ -13,8 +13,14 @@
   </div>
 -->
 <main-header></main-header>
-<main>
+
+<main class="flex-column align-center">
     <div id='portfolio'>
+        <div class="flex-column align-center">
+            <div class="separate" ng-repeat="project in portfolio">
+                <portfolio-piece></portfolio-piece>
+            </div>
+        </div>
     </div>
 </main>
 <div id="blog"></div>

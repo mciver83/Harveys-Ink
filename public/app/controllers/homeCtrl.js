@@ -1,6 +1,6 @@
 var app = angular.module('harveysInk');
 
-app.controller('homeCtrl', function($scope){
+app.controller('homeCtrl', function($scope, portfolio){
     $scope.myInterval = 3000;
     $scope.noWrapSlides = false;
     var slides = $scope.slides = [];
@@ -15,4 +15,7 @@ app.controller('homeCtrl', function($scope){
     for (var i=0; i<4; i++) {
         $scope.addSlide();
     }
+    
+    $scope.portfolio = portfolio;
+    console.log(111111, $scope.portfolio);
 })

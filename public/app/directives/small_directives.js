@@ -9,11 +9,11 @@ app.directive('hover', function(){
 		restrict: 'A',
 		link: function (scope, element, attrs) {
 			// var textColor = 'text-red';
-			element.on('mouseover', function(){
+			element.on('mouseover', function (){
 				element.addClass(scope.toggle);
 				element.removeClass(scope.untoggle);
 			})
-			element.on('mouseout', function(){
+			element.on('mouseout', function (){
 				element.removeClass(scope.toggle);
 				element.addClass(scope.untoggle);
 			})
@@ -40,3 +40,39 @@ app.directive('scroll', function ($window) {
         });
     };
 });
+
+app.directive('selectActive', function () {
+    return {
+        scope: {
+            item: '=',
+            compare: '=',
+            apply: '@'
+        },
+        restring: 'A',
+        link: function (scope, element, attrs) {
+            scope.$watch('compare', function () {
+                if (scope.item == scope.compare) {
+                    element.addClass(scope.apply);
+                } else {
+                    element.removeClass(scope.apply);
+                }
+            })
+        }
+    }
+})
+
+app.directive('clickClose', function () {
+    return {
+        scope: {
+            showVar: '=',
+            elClick: '@'
+        },
+        restrict: 'A',
+        link: function (scope, el, attrs) {
+            var clickEl = el.find(scope.elClick);
+            clickEl.on('click', function () {
+                scope.show = !scope.show;
+            })
+        }
+    }
+})

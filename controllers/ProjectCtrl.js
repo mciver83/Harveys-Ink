@@ -19,13 +19,12 @@ module.exports = {
 	        		return res.status(500).send('failed to upload to s3').end();
 	    		} else {
 	    			req.body.images.push({
-	    				url: data
+	    				url: data.Location
 	    			});
 
-	    			if (index === array.length - 1) {
+	    			if (req.body.images.length === array.length) {
 	    				new Project(req.body)
 	    				.save(function (err2, response) {
-	    					console.log('err', err2, 'data', response)
 	    					if (err2) {
 	    						res.status(500).send(err2);
 	    					} else {
@@ -36,5 +35,12 @@ module.exports = {
 	    		}
 			})
 		})
-	}
+	},
+    
+    get: function (req, res) {
+        Project.find({}, function (err, data) {
+            if (err) res.status(500).send(err);
+            else res.send(data);
+        })
+    }
 }
