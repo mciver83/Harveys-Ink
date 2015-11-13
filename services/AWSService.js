@@ -16,7 +16,6 @@ var photoBucket = new AWS.S3({params: {Bucket: 'harveysink'}});
 module.exports.uploadToS3 = function(file, callback) {
     photoBucket
         .upload({
-            // Bucket: 'paulphin',
             ACL: 'public-read', 
             Body: file.url, 
             Key: file.name,

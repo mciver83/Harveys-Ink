@@ -1,0 +1,33 @@
+<div class="view">
+    <main-header></main-header>
+
+    <div class="parallax-container center">
+        <div parallax>
+            <!-- <img src="public/app/images/people.png"> -->
+            <img src="https://images.unsplash.com/25/black-white-city.jpg?q=80&fm=jpg&s=97fbaa1afc2c71c489081ecc63d070d7">
+        </div>
+    </div>
+        
+    <main>
+        
+        <div ng-show="content" class="flex-column align-center">
+            <i ng-click="showContent=!showContent" class="material-icons">mode_edit</i>
+            <div id="content" class="content" ng-bind-html="content.whoWeAre | unsafe">
+            </div>
+        </div>
+
+
+
+        <div ng-show="showContent">
+            <text-angular ng-if="!content" ng-model="newContent.whoWeAre"></text-angular>
+            <button class="btn btn-default" ng-if="!content" ng-click="addContent(newContent.whoWeAre)">submit</button>
+            <text-angular ng-if="content" ng-model="content.whoWeAre"></text-angular>
+            <button class="btn btn-default" ng-if="content" ng-click="editContent(content.whoWeAre)">submit</button>
+        </div>
+    </main>
+
+</div>
+
+
+
+

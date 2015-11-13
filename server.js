@@ -10,7 +10,7 @@ var express = require('express'),
 	fs = require('fs'),
 	multer = require('multer'),
 	cookieParser = require('cookie-parser'),
-	mongoUri = 'mongodb://localhost:27017/harveysInk';
+	mongoUri = 'mongodb://localhost/harveysInk',
 	// mongoUri = process.env.MONGOLAB_URI;
 
 
@@ -20,22 +20,22 @@ var express = require('express'),
 	ContentCtrl = require('./controllers/ContentCtrl'),
 // 	EmailCtrl = require('./controllers/EmailCtrl'),
 
-		
-	
+
+
 
 //stripe  make sure to .gitigore config folder
 // require('./config/stripe');
 
 
 
- 
+
 
 // require('./config/passport')(passport); // pass passport for configuration
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function(){
 	console.log('Connected to Mongo at ' + mongoUri);
-})	
+})
 
 // app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -77,10 +77,10 @@ app.get('/api/auth', isLoggedIn, function(req, res){
 })
 
 
-	
+
 //emails================================================================
 // app.post('/api/email/send', EmailCtrl.sendEmail);
-	
+
 
 // ======================================================================
 app.listen(port, function(){
@@ -89,7 +89,7 @@ app.listen(port, function(){
 
 function isLoggedIn(req, res, next) {
 
-    // if user is authenticated in the session, carry on 
+    // if user is authenticated in the session, carry on
     if (req.isAuthenticated()){
         return next();
     }
@@ -105,4 +105,4 @@ function isAdmin(req, res, done) {
         // res.status(403).redirect('/admin');
         res.status(403).send('you isnt an admin')
     }
-}	
+}

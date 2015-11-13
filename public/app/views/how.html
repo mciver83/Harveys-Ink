@@ -1,0 +1,19 @@
+<div class="view">
+    <main-header></main-header>
+    <main>
+        <div ng-show="content">
+            <i  ng-click="showContent=!showContent" class="material-icons">mode_edit</i>
+            <div ng-show="!showContent" id="content" class="content" ng-bind-html="content.howWeWork | unsafe">
+            </div>
+        </div>
+
+
+
+        <div ng-show="showContent">
+            <text-angular ng-model="newContent.howWeWork"></text-angular>
+            <button class="btn btn-default" ng-if="!content" ng-click="addContent(newContent.howWeWork)">submit</button>
+            <button class="btn btn-default" ng-if="content" ng-click="editContent(newContent.howWeWork)">submit</button>
+        </div>
+    </main>
+</div>
+    
